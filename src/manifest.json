@@ -1,0 +1,7 @@
+{
+    "manifest_version": 3,
+    "name": "SQLite Client",
+    "description": "SQLite Client to easily edit SQLite databases stored in OPFS",
+    "version": "1.0",
+    "devtools_page": "devtools.html"
+  }
