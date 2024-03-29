@@ -1,0 +1,135 @@
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .container {
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+
+    .sidebar {
+      background-color: #F8F9FA;
+      border-right: 1px solid #DADCE0;
+      #border-right: 1px solid #E8EAED;
+      height: 100%;
+      min-width: 300px;
+      max-width: 300px;
+      width: 300px;
+    }
+
+    .main-content {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: calc(100% - 300px);
+    }
+
+    .sql-editor {
+      border: none;
+      box-shadow: none;
+      height: 50%;
+      margin-top: 15px;
+      outline: none;
+      resize: none;
+      width: 100%;
+    }
+
+    .actions-bar {
+      margin-bottom: 15px;
+      padding-left: 15px;
+      padding-top: 10px;
+    }
+
+    .run-query {
+      background-color: #4285F4;
+      border: none;
+      border-radius: 8px;
+      box-shadow: none;
+      color: white;
+      padding: 12px 15px 12px 15px;
+      font-size: 1.05rem;
+    }
+
+    .run-query:hover {
+      background-color: #1A73E8;
+      cursor: pointer;
+    }
+
+    .run-query:active {
+      background-color: #1967D2;
+      cursor: pointer;
+    }
+
+    .ace_gutter-cell {
+      color: #9AA0A6;
+    }
+
+    .ace_gutter-layer {
+      background-color: white;
+    }
+
+    .ace_gutter-active-line, .ace_active-line {
+      background-color: #E8F0FE !important;
+    }
+
+    .results {
+      border-top: 1px solid #DADCE0;
+      flex-grow: 2;
+    }
+  </style>
+
+  <link href="
+https://cdn.jsdelivr.net/npm/ace-builds@1.32.9/css/ace.min.css
+" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="sidebar">
+
+  </div>
+  <div class="main-content">
+    <div id="sql-editor" class="sql-editor">SELECT * FROM USERS;
+
+
+    </div>
+
+    <div class="actions-bar">
+      <button class="run-query">Run Query</button>
+    </div>
+
+    <div class="results">
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.9/ace.js"
+        integrity="sha512-dcU9JDR8qh7+6yY3EU7CB5euTfcM2dWWnLmR+zzVQ5a5RQ3V9qw6Y1HflKo3YXdvJksCog7tmrbCviWS5NIOaA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="
+https://cdn.jsdelivr.net/npm/ace-builds@1.32.9/src-min-noconflict/theme-chrome.min.js
+"></script>
+
+
+<script>
+  var editor = ace.edit("sql-editor", {
+    mode: "ace/mode/sql",
+    selectionStyle: "text",
+
+    fontFamily: "Fira Code",
+        fontSize: "10pt",
+
+  });
+  editor.setTheme("ace/theme/xcode");
+</script>
+</body>
+</html>
