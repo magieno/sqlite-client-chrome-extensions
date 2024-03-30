@@ -15,7 +15,7 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "removeComments": true,
-    "outDir": "dist/esm",
+    "outDir": "dist/assets/js",
     "typeRoots": [
       "node_modules/@types"
     ],

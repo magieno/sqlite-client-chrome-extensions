@@ -1,0 +1,70 @@
+.sql-editor {
+  border: none;
+  box-shadow: none;
+  flex-grow: 1;
+  height: 50%;
+  min-height: 400px;
+  margin-top: 15px;
+  outline: none;
+  resize: none;
+  width: 100%;
+}
+
+.actions-bar {
+  flex-grow: 1;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+.run-query {
+  background-color: #4285F4;
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+  color: white;
+  padding: 12px 15px 12px 15px;
+  font-size: 1.05rem;
+}
+
+.run-query:hover {
+  background-color: #1A73E8;
+  cursor: pointer;
+}
+
+.run-query:active {
+  background-color: #1967D2;
+  cursor: pointer;
+}
+
+.save-query {
+  background-color: #E8F0FE;
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+  color: #4285F4;
+  padding: 12px 15px 12px 15px;
+  font-size: 1.05rem;
+}
+
+.save-query:hover {
+  background-color: #D2E3FC;
+  cursor: pointer;
+}
+
+.save-query:active {
+  background-color: #AECBFA;
+  cursor: pointer;
+}
+
+.ace_gutter-cell {
+  color: #9AA0A6;
+}
+
+.ace_gutter-layer {
+  background-color: white;
+}
+
+.ace_gutter-active-line, .ace_active-line {
+  background-color: #E8F0FE !important;
+}

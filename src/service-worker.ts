@@ -1,8 +1,7 @@
-declare var chrome: any;
-declare var browser: any;
+import Port = chrome.runtime.Port;
 
-((browser) => {
-    browser.runtime.onConnect.addListener((devToolsConnection) => {
+((chrome) => {
+    chrome.runtime.onConnect.addListener((devToolsConnection: Port) => {
         // Assign the listener function to a variable so we can remove it later.
         const devToolsListener = ({ tabId, name }, port) => {
             console.log("Service Worker connected")
@@ -14,8 +13,8 @@ declare var browser: any;
             devToolsConnection.onMessage.removeListener(devToolsListener);
         });
 
-        browser.tabs.onUpdated.addListener(() => {
+        chrome.tabs.onUpdated.addListener(() => {
             devToolsConnection.postMessage({ name: 'navigation' });
         });
     });
-})(chrome || browser);
+})(chrome);

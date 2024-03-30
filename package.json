@@ -1,14 +1,20 @@
 {
   "name": "sqlite-client-chrome-extensions",
   "version": "1.0.0",
-  "description": "To install:",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cp -r assets/* dist/assets/"
+    "build": "tsc && gulp build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/serviceworker": "^0.0.84"
+    "@types/chrome": "^0.0.263",
+    "@types/serviceworker": "^0.0.84",
+    "gulp": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^9.0.0",
+    "typescript": "^5.4.3",
+    "ts-node": "^10.9.2"
   }
 }
