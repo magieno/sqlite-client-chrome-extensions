@@ -4,8 +4,11 @@
   "description": "To install:",
   "main": "index.js",
   "scripts": {
-    "build": "cp -r src/assets/* dist/assets/*"
+    "build": "cp -r assets/* dist/assets/"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/serviceworker": "^0.0.84"
+  }
 }
