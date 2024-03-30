@@ -1,0 +1,11 @@
+{
+  "name": "sqlite-client-chrome-extensions",
+  "version": "1.0.0",
+  "description": "To install:",
+  "main": "index.js",
+  "scripts": {
+    "build": "cp -r src/assets/* dist/assets/*"
+  },
+  "author": "",
+  "license": "ISC"
+}

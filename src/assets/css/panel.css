@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.main-content {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: calc(100% - 300px);
+}

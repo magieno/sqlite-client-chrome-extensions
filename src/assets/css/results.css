@@ -1,0 +1,31 @@
+.results {
+  border-top: 1px solid #DADCE0;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.results-table {
+  border-color: black;
+  border-collapse: collapse;
+  line-height: 30px;
+  text-align: left;
+  width: 100%;
+}
+
+.results-table th {
+  background-color: #F1F3F4;
+  border-left: 1px solid #DADCE0;
+  padding: 8px;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+}
+
+.results-table td {
+  border: 1px solid #DADCE0;
+  padding: 8px;
+}
+
+.row-number {
+  text-align: center;
+}

@@ -1,0 +1,84 @@
+<html>
+<head>
+  <link href="../../third_party/ace.css" rel="stylesheet">
+  <link href="../css/panel.css" rel="stylesheet">
+  <link href="../css/results.css" rel="stylesheet">
+  <link href="../css/sidebar.css" rel="stylesheet">
+  <link href="../css/sql-editor.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="sidebar">
+    <h2>Database</h2>
+    <select class="databases-list" id="databases-list">
+      <option>test.sqlite3</option>
+    </select>
+
+    <hr>
+
+    <h2>Tables <small>(refresh)</small></h2>
+
+    <ul class="tables-list">
+      <li>articles
+        <ul class="columns-list">
+          <li>id (VARCHAR 36)</li>
+          <li>title (VARCHAR 255)</li>
+        </ul>
+      </li>
+      <li>customers</li>
+      <li>users</li>
+    </ul>
+
+<!--    <hr>-->
+
+<!--    <h2>Saved queries</h2>-->
+
+<!--    <ul class="saved-queries-list">-->
+<!--      <li>All Active Users</li>-->
+<!--      <li>New Customers (Last 24h)</li>-->
+<!--    </ul>-->
+
+  </div>
+  <div class="main-content">
+    <div id="sql-editor" class="sql-editor">SELECT * FROM USERS;
+
+
+    </div>
+
+    <div class="actions-bar">
+      <button class="run-query">Run Query</button>
+      <button class="save-query">Save Query</button>
+    </div>
+
+    <div class="results">
+      <table class="results-table">
+        <thead>
+        <tr>
+          <th class="row-number"></th>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>email</th>
+          <th>status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="row-number">0</td>
+          <td>Etienne</td>
+          <td>Noel</td>
+          <td>etiennenoel@google.com</td>
+          <td>employee</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="../../third_party/ace.js"></script>
+<script src="../../third_party/theme-xcode.js"></script>
+<script src="../js/ace_init.js"></script>
+<script src="../js/databases.js"></script>
+
+</body>
+</html>

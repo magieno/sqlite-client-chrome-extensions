@@ -1,0 +1,66 @@
+.sidebar {
+  background-color: #F8F9FA;
+  border-right: 1px solid #DADCE0;
+  #border-right: 1px solid #E8EAED;
+  height: 100%;
+  min-width: 300px;
+  max-width: 300px;
+  width: 300px;
+}
+
+hr {
+  background-color: #DADCE0;
+  border: none;
+  height: 1px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.sidebar h2 {
+  color: #9AA0A6;
+
+  font-size: 12pt;
+  margin-left: 15px;
+}
+
+.databases-list {
+  border-radius: 8px;
+  border: 1px solid #DADCE0;
+  padding: 8px;
+  margin-left: 15px;
+  width: calc(100% - 30px);
+}
+
+.databases-list:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.tables-list {
+  color: #4285F4;
+  line-height: 35px;
+  list-style-type: none;
+  margin-left: 25px;
+  padding: 0;
+}
+
+.columns-list {
+  color: #9AA0A6;
+  list-style-type: none;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.saved-queries-list {
+  color: #4285F4;
+  line-height: 35px;
+  list-style-type: none;
+  margin-left: 25px;
+  padding: 0;
+}
