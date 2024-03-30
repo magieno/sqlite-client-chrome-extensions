@@ -4,16 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && gulp build"
+    "build": "tsc && rollup -c rollup.config.mjs --compact && gulp build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/chrome": "^0.0.263",
     "@types/serviceworker": "^0.0.84",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rollup": "^3.16.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-ignore": "^1.0.10",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "dart-sass": "^1.25.0",
     "gulp": "^5.0.0",
     "gulp-sass": "^5.1.0",
-    "node-sass": "^9.0.0",
     "typescript": "^5.4.3",
     "ts-node": "^10.9.2"
   }

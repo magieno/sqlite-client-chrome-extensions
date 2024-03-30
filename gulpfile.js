@@ -1,18 +1,20 @@
 const gulp = require("gulp")
-const sass = require('gulp-sass')(require('sass'));
+const gulpSass = require('gulp-sass')
+const dartSass = require("dart-sass");
+const sass = gulpSass(dartSass);
 
 gulp.task("copyHtmlFiles", () => {
-  return gulp.src('html/*.html')
-      .pipe(gulp.dest('./dist/'));
+  return gulp.src('src/html/*.html')
+      .pipe(gulp.dest('./dist'));
 });
 
 gulp.task("copyThirdParty", () => {
-  return gulp.src('third_party')
+  return gulp.src('third_party/*')
       .pipe(gulp.dest('./dist/third_party'));
 });
 
 gulp.task("buildCss", () => {
-  return gulp.src('./scss/**/*.scss')
+  return gulp.src('./src/scss/**/*.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('./dist/assets/css'));
 });
