@@ -19,21 +19,21 @@ export default [
     ]
   },
 
-  {
-    input: 'out/tsc/service-worker.js',
-    output: {
-      dir: 'dist/assets/js',
-      format: 'esm',
-      exports: "auto",
-      compact: true,
-    },
-    plugins: [
-      json(),
-      nodeResolve({
-        preferBuiltins: true,
-      }),
-    ]
-  },
+  // {
+  //   input: 'out/tsc/service-worker.js',
+  //   output: {
+  //     dir: 'dist/assets/js',
+  //     format: 'esm',
+  //     exports: "auto",
+  //     compact: true,
+  //   },
+  //   plugins: [
+  //     json(),
+  //     nodeResolve({
+  //       preferBuiltins: true,
+  //     }),
+  //   ]
+  // },
   {
     input: 'out/tsc/devtools.js',
     output: {
