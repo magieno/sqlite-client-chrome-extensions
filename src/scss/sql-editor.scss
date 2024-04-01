@@ -11,6 +11,8 @@
 }
 
 .actions-bar {
+  display: flex;
+  align-items: center;
   flex-grow: 0;
   margin-bottom: 15px;
   padding-left: 15px;
@@ -55,6 +57,10 @@
 .save-query:active {
   background-color: #AECBFA;
   cursor: pointer;
+}
+
+.query-status {
+  margin-left: 15px;
 }
 
 .ace_gutter-cell {

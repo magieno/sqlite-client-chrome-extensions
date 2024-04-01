@@ -9,6 +9,10 @@ export class ListAllFilesMessageProcessor {
     const root = await navigator.storage.getDirectory();
     const files = await this.opfsManager.listAllFiles(root, root);
 
-    return new ListAllFilesResultMessage(listAllFiles.uniqueId, files);
+    const probableSqliteFiles = files.filter(filePathParts =>{
+      return filePathParts[filePathParts.length - 1].endsWith(".sqlite") || filePathParts[filePathParts.length - 1].endsWith(".sqlite3")
+    });
+
+    return new ListAllFilesResultMessage(listAllFiles.uniqueId, probableSqliteFiles, files);
   }
 }

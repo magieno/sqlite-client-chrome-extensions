@@ -26,17 +26,8 @@
       <a href="#" id="refresh-tables">Refresh</a>
     </div>
 
-    <ul class="tables-list">
+    <ul class="tables-list" id="tables-list">
       <li class="no-tables-found">No Tables Found</li>
-
-<!--      <li>articles-->
-<!--        <ul class="columns-list">-->
-<!--          <li>id (VARCHAR 36)</li>-->
-<!--          <li>title (VARCHAR 255)</li>-->
-<!--        </ul>-->
-<!--      </li>-->
-<!--      <li>customers</li>-->
-<!--      <li>users</li>-->
     </ul>
 
     <!--    <hr>-->
@@ -50,39 +41,21 @@
 
   </div>
   <div class="main-content">
-    <div id="sql-editor" class="sql-editor">SELECT * FROM USERS;
-
+    <div id="sql-editor" class="sql-editor">SELECT * FROM ;
 
     </div>
 
     <div class="actions-bar">
-      <button class="run-query">Run Query</button>
+      <button id="execute-sql-query" class="run-query">Run Query</button>
 <!--      <button class="save-query">Save Query</button>-->
+<!--      <div class="query-status">No errors; 0 rows affected; 83ms</div>-->
+      <div class="query-status" id="query-status">Execute a query to see the results below.</div>
     </div>
 
     <div class="results">
-      <p class="pristine-message">Run a query to see results.</p>
+      <table class="results-table" id="results-table">
 
-<!--      <table class="results-table">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--          <th class="row-number"></th>-->
-<!--          <th>first_name</th>-->
-<!--          <th>last_name</th>-->
-<!--          <th>email</th>-->
-<!--          <th>status</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr>-->
-<!--          <td class="row-number">0</td>-->
-<!--          <td>Etienne</td>-->
-<!--          <td>Noel</td>-->
-<!--          <td>etiennenoel@google.com</td>-->
-<!--          <td>employee</td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
+      </table>
     </div>
   </div>
 </div>

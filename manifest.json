@@ -17,7 +17,7 @@
                 "http://127.0.0.1/*"
             ],
             "run_at": "document_idle",
-            "js": ["assets/js/content-script.js"]
+            "js": ["assets/js/content-script.js"],
         }
     ]
 }
