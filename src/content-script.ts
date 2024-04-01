@@ -3,6 +3,7 @@ import {MessageTypeEnum} from './enums/message-type.enum';
 import {ListAllFilesMessageProcessor} from './message-processors/list-all-files.message-processor';
 import {ListAllFilesMessage} from './messages/list-all-files.message';
 
+
 ((chrome) => {
 
   const asyncFunctionWithAwait = async (message: MessageInterface, sender, sendResponse) => {

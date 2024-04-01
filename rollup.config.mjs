@@ -19,21 +19,21 @@ export default [
     ]
   },
 
-  // {
-  //   input: 'out/tsc/service-worker.js',
-  //   output: {
-  //     dir: 'dist/assets/js',
-  //     format: 'esm',
-  //     exports: "auto",
-  //     compact: true,
-  //   },
-  //   plugins: [
-  //     json(),
-  //     nodeResolve({
-  //       preferBuiltins: true,
-  //     }),
-  //   ]
-  // },
+  {
+    input: 'out/tsc/service-worker.js',
+    output: {
+      file: "dist/assets/js/service-worker.mjs",
+      format: 'esm',
+      exports: "auto",
+      compact: true,
+    },
+    plugins: [
+      json(),
+      nodeResolve({
+        preferBuiltins: true,
+      }),
+    ]
+  },
   {
     input: 'out/tsc/devtools.js',
     output: {
@@ -52,7 +52,7 @@ export default [
   {
     input: 'out/tsc/content-script.js',
     output: {
-      dir: 'dist/assets/js',
+      file: "dist/assets/js/content-script.js",
       format: 'esm',
       exports: "auto",
       compact: true,

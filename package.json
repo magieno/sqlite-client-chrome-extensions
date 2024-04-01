@@ -8,6 +8,9 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@magieno/sqlite-client": "^3.45.1-build1"
+  },
   "devDependencies": {
     "@types/chrome": "^0.0.263",
     "@types/serviceworker": "^0.0.84",

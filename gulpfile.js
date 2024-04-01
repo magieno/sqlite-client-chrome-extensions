@@ -12,6 +12,14 @@ gulp.task("copyThirdParty", () => {
   return gulp.src('third_party/*')
       .pipe(gulp.dest('./dist/third_party'));
 });
+gulp.task("copySqliteWorker", () => {
+  return gulp.src('node_modules/@magieno/sqlite-client/dist/bundle/sqlite-client-worker.js')
+      .pipe(gulp.dest('./dist/third_party'));
+});
+gulp.task("copySqliteWasm", () => {
+  return gulp.src('node_modules/@sqlite.org/sqlite-wasm/sqlite-wasm/jswasm/*')
+      .pipe(gulp.dest('./dist/third_party'));
+});
 
 gulp.task("buildCss", () => {
   return gulp.src('./src/scss/**/*.scss')
@@ -19,4 +27,4 @@ gulp.task("buildCss", () => {
       .pipe(gulp.dest('./dist/assets/css'));
 });
 
-gulp.task("build", gulp.series("copyHtmlFiles", "copyThirdParty", "buildCss"));
+gulp.task("build", gulp.series("copyHtmlFiles", "copyThirdParty", "buildCss", "copySqliteWorker", "copySqliteWasm"));
