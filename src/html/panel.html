@@ -19,8 +19,8 @@
     <div style="max-width: 800px;">
         <h2 style="text-align: left;">Frequently asked questions</h2>
         <h4>Why is it necessary?</h4>
-        <p>Due to limitations in capabilities of Chrome extensions, this extension can only access your SQLite Wasm by
-            communicating with your page. Therefore, your page must load the <a href="https://github.com/magieno/sqlite-client">@magieno/sqlite-client</a>.</p>
+        <p>Due to limitations in capabilities of Chrome extensions, this extension can only access SQLite Wasm by
+            communicating with your page (your page will execute the queries and return the results). Therefore, your page must load the <a href="https://github.com/magieno/sqlite-client">@magieno/sqlite-client</a>.</p>
 
         <h4>I have the extension installed and still see this page</h4>
         <p>Make sure that you activate the extension in your code. To protect the privacy, the <a href="https://github.com/magieno/sqlite-client">@magieno/sqlite-client</a>
@@ -29,6 +29,21 @@
 import {SqliteClientExtension} from "@magieno/sqlite-client";
 
 SqliteClientExtension.register("scripts/sqlite-worker.mjs");
+        </pre>
+
+        <p>If you are using <a href="https://github.com/magieno/sqlite-client">@magieno/sqlite-client</a> in your page, you can simply activate the extension as an option: </p>
+
+        <pre style="background-color: #bfdaff; border-radius: 10px; padding: 8px;">
+import {SqliteClientExtension} from "@magieno/sqlite-client";
+
+// Only available for OpfsWorker for now
+const sqliteClient = new SqliteClient({
+    type: SqliteClientTypeEnum.OpfsWorker,
+    filename,
+    flags: "c",
+    sqliteWorkerPath,
+    emitEventsToMagienoSqliteChromeExtension: true, // Activate the extension here
+})
         </pre>
     </div>
 </div>
