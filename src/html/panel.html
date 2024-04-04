@@ -4,10 +4,22 @@
   <link href="assets/css/panel.css" rel="stylesheet">
   <link href="assets/css/results.css" rel="stylesheet">
   <link href="assets/css/sidebar.css" rel="stylesheet">
+  <link href="assets/css/loading.css" rel="stylesheet">
   <link href="assets/css/sql-editor.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<div class="container" id="loading">
+  <h2>Loading the extension...</h2>
+
+  <button id="init">Init</button>
+</div>
+
+<div class="container" id="loading-error" style="display: none;">
+  <h3>Cannot load the extension</h3>
+  <p id="error-text">Make sure you have the @magieno/sqlite-client library imported in your page..</p>
+</div>
+
+<div class="container" id="extension" style="display: none;">
   <div class="sidebar">
     <div class="heading">
       <h2>SQLite File</h2>

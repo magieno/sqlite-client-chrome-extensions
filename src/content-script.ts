@@ -2,6 +2,7 @@ import {MessageInterface} from './interfaces/message.interface';
 import {MessageTypeEnum} from './enums/message-type.enum';
 import {ListAllFilesMessage} from './messages/list-all-files.message';
 import {ListAllFilesMessageProcessor} from "./message-processors/list-all-files.message-processor";
+import {InitMessage} from "./messages/init.message";
 
 
 ((chrome) => {
@@ -12,20 +13,24 @@ import {ListAllFilesMessageProcessor} from "./message-processors/list-all-files.
   const asyncFunctionWithAwait = async (message: MessageInterface, sender, sendResponse) => {
     // Parse the message
     switch (message.type) {
+
       case MessageTypeEnum.ListAllFiles: {
         const messageProcessor = new ListAllFilesMessageProcessor();
         const response = await messageProcessor.process(message as ListAllFilesMessage);
         sendResponse(response);
+        break;
       }
 
-      case MessageTypeEnum.ExecuteSqlQuery: {
-        window.dispatchEvent(new CustomEvent("MAGIENO_SQLITE_CLIENT_FROM_EXTENSION", {detail: message}));
+      case MessageTypeEnum.Init:
+      case MessageTypeEnum.ExecuteSqlQuery:
         responses[message.uniqueId] = {sendResponse};
-      }
+        window.dispatchEvent(new CustomEvent("MAGIENO_SQLITE_CLIENT_FROM_EXTENSION", {detail: message}));
 
-      case MessageTypeEnum.ExecuteSqlQueryResult: {
+        break;
+
+      case MessageTypeEnum.ExecuteSqlQueryResult:
         console.log(message);
-      }
+        break;
     }
   }
 
@@ -37,7 +42,8 @@ import {ListAllFilesMessageProcessor} from "./message-processors/list-all-files.
   });
 
   window.addEventListener("MAGIENO_SQLITE_CLIENT_TO_EXTENSION", (event) => {
-    if(event.detail.type === "EXECUTE_SQL_QUERY_RESULT") {
+    console.log(event);
+    if(event.detail.type === "EXECUTE_SQL_QUERY_RESULT" || event.detail.type === "INIT_RESULT") {
       const response = event.detail;
       responses[response.uniqueId].sendResponse(response);
 

@@ -4,10 +4,6 @@
     "description": "SQLite Client to easily edit SQLite databases stored in OPFS",
     "version": "1.0",
     "devtools_page": "devtools.html",
-    "background": {
-        "service_worker": "assets/js/service-worker.mjs",
-        "type": "module"
-    },
     "content_scripts": [
         {
             "matches": [
@@ -17,7 +13,7 @@
                 "http://127.0.0.1/*"
             ],
             "run_at": "document_idle",
-            "js": ["assets/js/content-script.js"],
+            "js": ["assets/js/content-script.js"]
         }
     ]
 }

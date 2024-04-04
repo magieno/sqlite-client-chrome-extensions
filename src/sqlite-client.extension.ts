@@ -3,11 +3,18 @@ import {ExtensionToInspectedPageProxy} from './proxies/extension-to-inspected-pa
 import {MessageTypeEnum} from "./enums/message-type.enum";
 import {ExecuteSqlQueryMessage} from "./messages/execute-sql-query.message";
 import {ExecuteSqlResultMessage} from "@magieno/sqlite-client/dist/esm/messages/execute-sql-result.message";
+import {InitResultMessage} from "./messages/init-result.message";
 
 class SqliteClientExtension {
     private extensionToInspectedPageProxy: ExtensionToInspectedPageProxy
 
     private selectedDatabase?: string;
+
+    private initSuccessful = false;
+
+    private loadingInterval;
+
+    private startedLoading = new Date();
 
     async refreshDatabases() {
         const response = await this.extensionToInspectedPageProxy.getAllFiles();
@@ -90,8 +97,13 @@ class SqliteClientExtension {
         queryStatus.innerText = `No errors. ${responseMessage.response.length} rows affected.`;
     }
 
-    init(browser) {
-        this.extensionToInspectedPageProxy = new ExtensionToInspectedPageProxy(browser.devtools.inspectedWindow.tabId);
+    afterSuccessfulInit() {
+        clearInterval(this.loadingInterval);
+        this.initSuccessful = true;
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("loading-error").style.display = "none";
+        document.getElementById("extension").style.display = "block";
 
         // Register JS Events
         document.getElementById("refresh-databases").addEventListener("click", async () => {
@@ -112,10 +124,46 @@ class SqliteClientExtension {
 
         this.refreshDatabases();
     }
+
+    afterUnsuccessfulInit(error?: string) {
+        clearInterval(this.loadingInterval);
+
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("loading-error").style.display = "block";
+        if(error) {
+            document.getElementById("error-text").innerText = error;
+        }
+    }
+
+    init(browser) {
+
+        this.loadingInterval = setInterval(() => {
+            if(this.startedLoading.getTime() + 3000 < new Date().getTime()) {
+                //this.afterUnsuccessfulInit()
+            }
+        }, 300);
+
+        this.extensionToInspectedPageProxy = new ExtensionToInspectedPageProxy(browser.devtools.inspectedWindow.tabId);
+
+        this.extensionToInspectedPageProxy.init().then( (value: InitResultMessage) => {
+            console.log(value);
+            if(value.error) {
+                this.afterUnsuccessfulInit(value.error);
+                return;
+            }
+
+            this.afterSuccessfulInit();
+        }).catch(error => {
+            this.afterUnsuccessfulInit()
+        })
+    }
 }
 
 
 ((browser) => {
     const sqliteClientExtension = new SqliteClientExtension();
-    sqliteClientExtension.init(browser);
+    document.getElementById("init").addEventListener("click", async () => {
+        sqliteClientExtension.init(browser);
+    });
+
 })(chrome);

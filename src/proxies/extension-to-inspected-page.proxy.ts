@@ -4,6 +4,7 @@ import {MessageTypeEnum} from '../enums/message-type.enum';
 import {ListAllFilesResultMessage} from '../messages/list-all-files-result.message';
 import {ExecuteSqlQueryMessage} from "../messages/execute-sql-query.message";
 import {ExecuteSqlQueryResultMessage} from "../messages/execute-sql-query-result.message";
+import {InitMessage} from "../messages/init.message";
 
 export class ExtensionToInspectedPageProxy {
   constructor(public readonly tabId: number) {
@@ -24,11 +25,20 @@ export class ExtensionToInspectedPageProxy {
     return response;
   }
 
+  async init() {
+    return this.send(new InitMessage());
+  }
+
   send(message: MessageInterface): Promise<MessageInterface> {
     return new Promise((resolve, reject) => {
-      chrome.tabs.sendMessage(this.tabId, message, (response: MessageInterface) => {
-        return resolve(response);
-      });
+      try {
+        chrome.tabs.sendMessage(this.tabId, message, (response: MessageInterface) => {
+          console.log(message, response);
+          return resolve(response);
+        });
+      } catch (e) {
+        return reject(e);
+      }
     })
   }
 }
