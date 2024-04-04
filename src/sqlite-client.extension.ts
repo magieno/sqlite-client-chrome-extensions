@@ -117,7 +117,7 @@ class SqliteClientExtension {
 
         document.getElementById("loading").style.display = "none";
         document.getElementById("loading-error").style.display = "none";
-        document.getElementById("extension").style.display = "block";
+        document.getElementById("extension").style.display = "flex";
 
         // Register JS Events
         document.getElementById("refresh-databases").addEventListener("click", async () => {
@@ -153,7 +153,7 @@ class SqliteClientExtension {
 
         this.loadingInterval = setInterval(() => {
             if(this.startedLoading.getTime() + 3000 < new Date().getTime()) {
-                //this.afterUnsuccessfulInit()
+                this.afterUnsuccessfulInit()
             }
         }, 300);
 
@@ -176,8 +176,6 @@ class SqliteClientExtension {
 
 ((browser) => {
     const sqliteClientExtension = new SqliteClientExtension();
-    document.getElementById("init").addEventListener("click", async () => {
-        sqliteClientExtension.init(browser);
-    });
+    sqliteClientExtension.init(browser);
 
 })(chrome);

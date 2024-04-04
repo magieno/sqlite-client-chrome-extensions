@@ -33,7 +33,6 @@ export class ExtensionToInspectedPageProxy {
     return new Promise((resolve, reject) => {
       try {
         chrome.tabs.sendMessage(this.tabId, message, (response: MessageInterface) => {
-          console.log(message, response);
           return resolve(response);
         });
       } catch (e) {
