@@ -1,73 +1,89 @@
 <html>
 <head>
-  <link href="third_party/ace.css" rel="stylesheet">
-  <link href="assets/css/panel.css" rel="stylesheet">
-  <link href="assets/css/results.css" rel="stylesheet">
-  <link href="assets/css/sidebar.css" rel="stylesheet">
-  <link href="assets/css/loading.css" rel="stylesheet">
-  <link href="assets/css/sql-editor.css" rel="stylesheet">
+    <link href="third_party/ace.css" rel="stylesheet">
+    <link href="assets/css/panel.css" rel="stylesheet">
+    <link href="assets/css/results.css" rel="stylesheet">
+    <link href="assets/css/sidebar.css" rel="stylesheet">
+    <link href="assets/css/loading.css" rel="stylesheet">
+    <link href="assets/css/sql-editor.css" rel="stylesheet">
 </head>
 <body>
 <div class="container" id="loading">
-  <h2>Loading the extension...</h2>
+    <h2>Loading the extension...</h2>
 </div>
 
 <div class="container" id="loading-error" style="display: none;">
-  <h3>Cannot load the extension</h3>
-  <p id="error-text">Make sure you have the @magieno/sqlite-client library imported in your page..</p>
+    <h1>Cannot load the extension</h1>
+    <p id="error-text">Make sure you have the <a href="https://github.com/magieno/sqlite-client">@magieno/sqlite-client</a> library imported in your page.</p>
+
+    <div style="max-width: 800px;">
+        <h2 style="text-align: left;">Frequently asked questions</h2>
+        <h4>Why is it necessary?</h4>
+        <p>Due to limitations in capabilities of Chrome extensions, this extension can only access your SQLite Wasm by
+            communicating with your page. Therefore, your page must load the <a href="https://github.com/magieno/sqlite-client">@magieno/sqlite-client</a>.</p>
+
+        <h4>I have the extension installed and still see this page</h4>
+        <p>Make sure that you activate the extension in your code. To protect the privacy, the <a href="https://github.com/magieno/sqlite-client">@magieno/sqlite-client</a>
+            library doesn't activate the extension by default. To do so, register the extension in all your pages:</p>
+        <pre style="background-color: #bfdaff; border-radius: 10px; padding: 8px;">
+import {SqliteClientExtension} from "@magieno/sqlite-client";
+
+SqliteClientExtension.register("scripts/sqlite-worker.mjs");
+        </pre>
+    </div>
 </div>
 
 <div class="container" id="extension" style="display: none;">
-  <div class="sidebar">
-    <div class="heading">
-      <h2>SQLite File</h2>
-      <a href="#" id="refresh-databases">Refresh</a>
-    </div>
+    <div class="sidebar">
+        <div class="heading">
+            <h2>SQLite File</h2>
+            <a href="#" id="refresh-databases">Refresh</a>
+        </div>
 
 
-    <select class="databases-list" id="databases-list">
-      <option>Select a file from OPFS</option>
-    </select>
+        <select class="databases-list" id="databases-list">
+            <option>Select a file from OPFS</option>
+        </select>
 
-    <hr>
+        <hr>
 
-    <div class="heading">
-      <h2>Tables</h2>
-      <a href="#" id="refresh-tables">Refresh</a>
-    </div>
+        <div class="heading">
+            <h2>Tables</h2>
+            <a href="#" id="refresh-tables">Refresh</a>
+        </div>
 
-    <ul class="tables-list" id="tables-list">
-      <li class="no-tables-found">No Tables Found</li>
-    </ul>
+        <ul class="tables-list" id="tables-list">
+            <li class="no-tables-found">No Tables Found</li>
+        </ul>
 
-    <!--    <hr>-->
+        <!--    <hr>-->
 
-    <!--    <h2>Saved queries</h2>-->
+        <!--    <h2>Saved queries</h2>-->
 
-    <!--    <ul class="saved-queries-list">-->
-    <!--      <li>All Active Users</li>-->
-    <!--      <li>New Customers (Last 24h)</li>-->
-    <!--    </ul>-->
-
-  </div>
-  <div class="main-content">
-    <div id="sql-editor" class="sql-editor">SELECT * FROM ;
+        <!--    <ul class="saved-queries-list">-->
+        <!--      <li>All Active Users</li>-->
+        <!--      <li>New Customers (Last 24h)</li>-->
+        <!--    </ul>-->
 
     </div>
+    <div class="main-content">
+        <div id="sql-editor" class="sql-editor">SELECT * FROM ;
 
-    <div class="actions-bar">
-      <button id="execute-sql-query" class="run-query">Run Query</button>
-<!--      <button class="save-query">Save Query</button>-->
-<!--      <div class="query-status">No errors; 0 rows affected; 83ms</div>-->
-      <div class="query-status" id="query-status">Execute a query to see the results below.</div>
+        </div>
+
+        <div class="actions-bar">
+            <button id="execute-sql-query" class="run-query">Run Query</button>
+            <!--      <button class="save-query">Save Query</button>-->
+            <!--      <div class="query-status">No errors; 0 rows affected; 83ms</div>-->
+            <div class="query-status" id="query-status">Execute a query to see the results below.</div>
+        </div>
+
+        <div class="results">
+            <table class="results-table" id="results-table">
+
+            </table>
+        </div>
     </div>
-
-    <div class="results">
-      <table class="results-table" id="results-table">
-
-      </table>
-    </div>
-  </div>
 </div>
 
 <script src="../../third_party/ace.js"></script>

@@ -143,7 +143,7 @@ class SqliteClientExtension {
         clearInterval(this.loadingInterval);
 
         document.getElementById("loading").style.display = "none";
-        document.getElementById("loading-error").style.display = "block";
+        document.getElementById("loading-error").style.display = "flex";
         if(error) {
             document.getElementById("error-text").innerText = error;
         }

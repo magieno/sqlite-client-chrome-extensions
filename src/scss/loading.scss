@@ -1,4 +1,14 @@
 #loading {
   height: 100%;
   width:100%;
+
+}
+
+#loading-error {
+  height: 100%;
+  width:100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
