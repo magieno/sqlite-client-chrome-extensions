@@ -42,6 +42,9 @@ class SqliteClientExtension {
 
     async reset() {
         document.getElementById("query-status").innerText = "Execute a query to see the results below.";
+        document.getElementById("query-status").classList.remove("success");
+        document.getElementById("query-status").classList.remove("error");
+        document.getElementById("query-status").classList.remove("in-progress");
         document.getElementById("results-table").innerHTML = "";
     }
 
@@ -66,12 +69,23 @@ class SqliteClientExtension {
     async executeSqlQuery() {
         const queryStatus = document.getElementById("query-status");
         queryStatus.innerText = "Execution in progress...";
+        queryStatus.classList.add("in-progress");
+        queryStatus.classList.remove("error");
+        queryStatus.classList.remove("success");
+
         document.getElementById("results-table").innerHTML = "";
 
         const editor = ace.edit("sql-editor");
 
         const responseMessage = await this.extensionToInspectedPageProxy.executeSqlQuery(this.selectedDatabase, editor.getValue());
 
+        if(responseMessage.error) {
+            queryStatus.classList.add("error");
+            queryStatus.innerText = `Error: ${responseMessage.error}`;
+            return;
+        }
+
+        queryStatus.classList.add("success");
         let innerHTML = `<thead>`;
 
         for (const key in responseMessage.response[0]) {

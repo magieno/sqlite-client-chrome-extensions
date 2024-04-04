@@ -61,6 +61,18 @@
 
 .query-status {
   margin-left: 15px;
+
+  &.in-progress {
+    color: #4285F4;
+  }
+
+  &.success {
+    color: #34A853;
+  }
+
+  &.error {
+    color: #EA4335
+  }
 }
 
 .ace_gutter-cell {
