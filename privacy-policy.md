@@ -21,7 +21,7 @@ Access: While not applicable to personal information in this case, you can alway
 Deletion: You have complete control over the deletion of your uploaded SQLite files. These files reside within your browser's OPFS, and you can choose to remove them at any time.
 Changes to this Privacy Policy:
 
-We may update this privacy policy from time to time to reflect any changes in our data practices or to comply with new regulations. We will notify you of any material changes by posting the new privacy policy on [link to your website, if applicable] or within the Extension itself.
+We may update this privacy policy from time to time to reflect any changes in our data practices or to comply with new regulations. We will notify you of any material changes by posting the new privacy policy on [link to your website, if applicable](https://raw.githubusercontent.com/magieno/sqlite-client-chrome-extensions/master/privacy-policy.md] or within the Extension itself.
 
 Contact Us:
 
